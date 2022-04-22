@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog:latest
+    restart: always
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  php74:
+    build:
+      context: ./
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
